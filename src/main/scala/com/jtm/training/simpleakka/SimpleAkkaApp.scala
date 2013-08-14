@@ -10,10 +10,10 @@ object SimpleAkka extends App {
 
   val numOfActors = system.settings.config getInt "simple-akka.runner.number-of-actors"
 
-  val ingBank = system.actorOf(Props(new Bank()), "ing-bank")
+  val theBank = system.actorOf(Props(new Bank()), "bank")
 
   for (i <- 1 to numOfActors) {
-    system.actorOf(Props(new Transaction(ingBank)), "tranaction" + i)
+    system.actorOf(Props(new Transaction(theBank)), "tranaction" + i)
   }
 }
 
