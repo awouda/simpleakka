@@ -5,9 +5,9 @@ import com.jtm.training.simpleakka.Bank._
 import concurrent.duration.Duration
 import scala.concurrent.duration._
 
-class Transaction(bank: ActorRef) extends Actor with ActorLogging {
+class Customer(bank: ActorRef) extends Actor with ActorLogging {
 
-  import Transaction._
+  import Customer._
   import context.dispatcher
 
   val transactionTime = 1.seconds
@@ -46,7 +46,7 @@ class Transaction(bank: ActorRef) extends Actor with ActorLogging {
 
 }
 
-object Transaction {
+object Customer {
 
   case class Paid(amount: Int)
 

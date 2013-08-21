@@ -1,7 +1,7 @@
 package com.jtm.training.simpleakka
 
 import akka.actor._
-import com.jtm.training.simpleakka.Transaction._
+import com.jtm.training.simpleakka.Customer._
 import com.jtm.training.simpleakka.Bank._
 
 object SimpleAkka extends App {
@@ -13,7 +13,7 @@ object SimpleAkka extends App {
   val theBank = system.actorOf(Props(new Bank()), "bank")
 
   for (i <- 1 to numOfActors) {
-    system.actorOf(Props(new Transaction(theBank)), "tranaction" + i)
+    system.actorOf(Props(new Customer(theBank)), "customer" + i)
   }
 }
 
